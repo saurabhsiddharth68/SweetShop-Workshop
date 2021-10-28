@@ -6,12 +6,52 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-
         System.out.println("Welcome to Sweet Shop Management program");
+        int choice = 0;
+        Application application = new Application();
+        while (choice != 7) {
+            choice = application.userInterface.showUserMenu();
+            application.handleUserSelection(choice);
+        }
+        System.out.println("Good Bye!!!");
+    }
+        SweetRepository sweetRepository = new SweetRepository();
+        UserInterface userInterface = new UserInterface();
 
-        Sweet Laddu = new Laddu();
-        bundharLaddu.id = "Bl001";
-        bundharLaddu.price = 20;
+
+        public void handleUserSelection(int choice) {
+            Set sweetSet = sweetRepository.getSweetList();
+            switch (choice) {
+                case 1:
+                    addSweet();
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    userInterface.print(sweetSet);
+                    break;
+                case 5:
+                    System.out.println("\nPrinting IDietSweet\n");
+                    userInterface.printDietSweets(sweetSet);
+                    break;
+                case 6:
+                    System.out.println("\nPrinting INormalSweet\n");
+                    userInterface.printNormalSweets(sweetSet);
+                    break;
+                case 7:
+                    break;
+                default:
+                    System.out.println("Enter correct choice");
+            }
+        }
+        public void addSweet() {
+
+        Sweet laddu = new Laddu();
+        laddu.id = "Bl001";
+        laddu.price = 20;
 
         Sweet kajukatdhi = new Kajukatdhi();
         kajukatdhi.id = "Kk002";
@@ -31,7 +71,7 @@ public class Application {
 
 
         SweetRepository sweetRepository = new SweetRepository();
-        sweetRepository.add(Laddu);
+        sweetRepository.add(laddu);
         sweetRepository.add(kajukatdhi);
         sweetRepository.add(jelibi);
         sweetRepository.add(kalakhand);
@@ -47,7 +87,7 @@ public class Application {
         userInterface.printDietSweets(sweetSet);
         System.out.println("\nPrinting INormalSweet\n");
         userInterface.printNormalSweets(sweetSet);
-        sweetRepository.delete(Laddu);
+        sweetRepository.delete(laddu);
         sweetRepository.delete(kalakhand);
         sweetRepository.delete(kajukatdhi);
         System.out.println("\nPrinting after remove the sweet\n");

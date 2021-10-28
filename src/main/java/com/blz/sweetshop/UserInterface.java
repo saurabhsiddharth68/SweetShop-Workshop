@@ -1,0 +1,39 @@
+package com.blz.sweetshop;
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+public class UserInterface {
+
+    public int showUserMenu() {
+        System.out.println("Enter \n 1. To Add Sweets\n 2. To Remove Sweets\n 3. To Add Edit Sweets\n " +
+                "4. To Print All Sweets\n 5. To Print Diet Sweets\n 6. To Print Normal Sweets\n " +
+                "7. To Exit From Menu");
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        return choice;
+    }
+
+    public void print(Set<Sweet> set) {
+        for (Sweet sweet : set ){
+            System.out.println(sweet);
+        }
+    }
+
+    public void printDietSweets(Set<Sweet> set) {
+        for (Sweet sweet : set ){
+            if (sweet instanceof IDietSweets) {
+                System.out.println(sweet);
+            }
+        }
+    }
+    public void printNormalSweets(Set<Sweet> set) {
+        for (Sweet sweet : set ){
+            if (sweet instanceof INormalSweets) {
+                System.out.println(sweet);
+            }
+        }
+    }
+}
+
