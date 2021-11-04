@@ -20,6 +20,7 @@ public class SweetRepository {
     }
 
     public Set getSweetList() {
+
         return sweetList;
     }
 
@@ -28,6 +29,15 @@ public class SweetRepository {
     }
 
     public void delete(Sweet sweet) {
+
         sweetList.remove(sweet);
+    }
+    public Sweet getSweet(String sweetName) {
+        for (Sweet sweet : sweetList) {
+            if (sweet.name.equalsIgnoreCase(sweetName)) {
+                return sweet;
+            }
+        }
+        return null;
     }
 }
